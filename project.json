@@ -6,5 +6,6 @@
 	"githubUrl" : "https://github.com/azendal/neon",
 	"forkColor" : "orange",
 	"favicon"   : "assets/img/favicon.gif",
-	"icon"      : "assets/img/Ne.png"
+	"icon"      : "assets/img/Ne.png",
+    "codeTheme" : "rainbow"
 }

@@ -59,6 +59,10 @@ var Context = function( siteFiles ){
 
       render : function( partialName, locals ){
         return new Tm( {template: fs.readFileSync( viewsFolder+'/'+partialName, 'utf8')} ).parseSync().renderSync({Cd: this, locals: locals});
+      },
+
+      printCode : function( partial ){
+          return '<pre class="high">'+partial+'</pre>';
       }
 
     };
