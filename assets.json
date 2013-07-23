@@ -2,6 +2,7 @@
 	"css" : [
 		"reset.css",
 		"style.css",
+		"button.css",
 		"rainbow.css"
 	],
 

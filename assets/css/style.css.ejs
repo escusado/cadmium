@@ -1,9 +1,44 @@
+<% //Conf
 
+   //colors
+   var colors = {
+      first  : '#ff3366',
+      second : '#3366ff',
+      third  : '#93C763',
+      fourth : '#ffcc33',
+      fifth  : '#7db9e8',
+
+      bodyBg    : '#eeeeee',
+      wrapperBg : '#fdfdfd',
+
+      bodyText  : '#333333',
+
+      h1   : '#424242',
+      desc : '#969696'
+   };
+
+   //fonts
+   var fonts = {
+	   /* Trebuchet-based sans serif stack */
+       body : '"Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif',
+       h1   : '"Montserrat", sans-serif'
+   };
+
+   //sizes
+   var sizes = {
+       wrapper : 660,
+
+       h1 : 48,
+       h2 : 24,
+       h3 : 16
+   };
+
+%>
 
 body {
-	color            : #333333;
-    background-color : #eeeeee;
-    font-family      : "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+	color            : <%= colors.bodyText %>;
+    background-color : <%= colors.bodyBg %>;
+    font-family      : <%= fonts.body %>;
 }
 
 /******************************************** document */
@@ -12,15 +47,15 @@ body {
 	height: 3px;
 	background-color: #456;
 
-    background: linear-gradient(to right,  #ff3366 20%,#3366ff 21%,#3366ff 40%,#93C763 41%,#93C763 60%,#ffcc33 61%,#ffcc33 80%,#7db9e8 81%); /* W3C */
+    background: linear-gradient(to right,  <%= colors.first %> 20%,<%= colors.second %> 21%,<%= colors.second %> 40%,<%= colors.third %> 41%,<%= colors.third %> 60%,<%= colors.fourth %> 61%,<%= colors.fourth %> 80%,<%= colors.fifth %> 81%); /* W3C */
 	box-shadow: inset 0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,.9);
 }
 
 .wrapper {
-	width  : 660px;
+	width  : <%= sizes.wrapper %>px;
 	padding: 20px;
 	margin : auto;
-	background-color: #fdfdfd;
+	background-color: <%= colors.wrapperBg %>;
 }
 
 /********************************************* header */
@@ -43,25 +78,25 @@ body {
 
 .name{
     margin-top  : 20px;
-    font-size   : 48px;
+    font-size   : <%= sizes.h1 %>px;
     
     text-align  : center;
 	font-weight : bold;
-	color       : #424242;
+	color       : <%= colors.h1 %>;
 }
 
 .name span{
-    font-size : 24px;
+    font-size : <%= sizes.h2 %>px;
 
-    color     : #ff3366;
+    color     : <%= colors.first %>;
 }
 
 .description {
-	font-size: 16px;
+	font-size: <%= sizes.h3 %>px;
 
     text-align  : center;
     font-weight: bold;
-	color: #969696;
+	color: <%= colors.desc %>;
 }
 
 /********************************************** intro */
