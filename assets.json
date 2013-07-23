@@ -1,14 +1,17 @@
 {
 	"css" : [
-		"reset",
-		"style",
-		"rainbow",
-		"http://fonts.googleapis.com/css?family=Montserrat:400,700"
+		"reset.css",
+		"style.css",
+		"rainbow.css"
 	],
 
 	"js" : [
-		"vendor/neon",
-		"vendor/jquery",
-		"vendor/rainbow-custom.min"
+		"vendor/neon.js",
+		"vendor/jquery.js",
+		"vendor/rainbow-custom.min.js"
+	],
+
+	"googleFonts" : [
+		"Montserrat:400,700"
 	]
 }

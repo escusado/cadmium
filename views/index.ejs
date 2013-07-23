@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title><%= Cd.proj.name %>.<%= Cd.proj.lang %></title>
+    <!-- favicon -->
+    <link rel="icon" type="image/gif" href="<%= 'assets/'+Cd.proj.favicon+Cd.rId %>" />
+
+    <!-- css -->
+    <%= Cd.renderAssets( Cd.assets.css ) %>
+    <!-- fonts -->
+    <%= Cd.renderFonts( Cd.assets.googleFonts ) %>
+    <!-- js -->
+    <%= Cd.renderAssets( Cd.assets.js ) %>
+
 </head>
 <body>
+    <!-- fork me ribbon -->
+    <a href="<%= Cd.proj.githubUrl %>"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_<%= Cd.proj.forkColor %>_ff7600.png" alt="Fork me on GitHub"></a>
+    <!-- top color bar -->    
+    <div class="top-line"></div>
     
+    <div class="wrapper">
+        <!-- header -->
+        <%= Cd.render('header.ejs') %>
+    </div>
 </body>
 </html>
