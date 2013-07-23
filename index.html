@@ -1,73 +1,55 @@
 <!doctype html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <title>Neon.js</title>
-
     <!-- favicon -->
-
-    <link rel="icon" type="image/gif" href="assets/assets/img/favicon.gif?r=f7a0" />
-
-
+    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?r=c0ab" />
 
     <!-- css -->
-
     <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
 <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+<link href="assets/css/button.css" rel="stylesheet" type="text/css">
 <link href="assets/css/rainbow.css" rel="stylesheet" type="text/css">
-
     <!-- fonts -->
-
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-
     <!-- js -->
-
     <script src="assets/js/vendor/neon.js"></script>
 <script src="assets/js/vendor/jquery.js"></script>
 <script src="assets/js/vendor/rainbow-custom.min.js"></script>
 
-
-
 </head>
-
 <body>
-
     <!-- fork me ribbon -->
-
     <a href="https://github.com/azendal/neon"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
-
     <!-- top color bar -->    
-
     <div class="top-line"></div>
-
     
-
     <div class="wrapper">
-
         <!-- header -->
-
         <div class="header">
-
-  <a href="">
-
-    <img class="tm-icon" src="assets/img/Ne.png" alt="Thulium">
-
-    <h1 class="name">Neon<span>.js</span></h1>
-
-    <div class="tagline">JavaScript DSL for <span>Class</span>ical Inheritance</div>
-
+  <a href="http://freshout-dev.github.io/neon">
+    <img class="tm-icon" src="assets/img/Ne.png" alt="Neon">
+    <div class="name">Neon<span>.js</span></div>
+    <div class="description">JavaScript DSL for Classical Inheritance</div>
   </a>
+</div>
+        <!-- /header -->
+        
+        <div class="content">
+    
+    <h1>What is it?</h1>
+    <p>Neon packs a DSL for Class creation, that helps in making programs following an object oriented design.</p>
+
+<pre class="high">function (){ 
+tm.print("\n//Define Class:\nClass('Minion')({\n  prototype : {\n\n    name : null,\n    position : null,\n\n    init : function ( name ){\n      this.name = name;\n      this.position = this.name === 'Lumbergh' ? 'Boss' : 'Drone';\n\n      return this;\n    },\n\n    getIdentity : function(){\n        return this.position + ' - ' + this.name;\n    }\n  }\n});\n//Instance it\nvar gibbonsTheDrone = new Minion('Dave');\nvar lumberghTheBoss = new Minion('Lumbergh');\n//Consume it\nconsole.log( gibbonsTheDrone.getIdentity() );\nconsole.log( lumberghTheBoss.getIdentity() );\n");
+ }</pre>
+
+    <h2>What is not</h2>
+    <p>The philosophy is that it should not try to emulate other languages, so it preserves the Javascript good parts, but with a nicer syntax to create classes that ensure interfaces and include reusable functionality as modules.</p>
 
 </div>
 
-
-
     </div>
-
 </body>
-
 </html>

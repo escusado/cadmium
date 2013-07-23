@@ -1,10 +1,45 @@
+<% //Conf
 
+   //colors
+   var colors = {
+      first  : '#ed0700',
+      second : '#F7C21A',
+      third  : '#93C763',
+      fourth : '#1296ff',
+      fifth  : '#7db9e8',
+
+      bodyBg    : '#eeeeee',
+      wrapperBg : '#fdfdfd',
+
+      bodyText  : '#333333',
+
+      h1   : '#424242',
+      desc : '#969696'
+   };
+
+   //fonts
+   var fonts = {
+	   /* Trebuchet-based sans serif stack */
+       body : '"Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif',
+       h1   : '"Montserrat", sans-serif'
+   };
+
+   //sizes
+   var sizes = {
+       wrapper : 660,
+
+       h1 : 48,
+       h2 : 24,
+       h3 : 16
+   };
+
+%>
 
 /******************************************** Theme */
 body {
-    color            : #333333;
-    background-color : #eeeeee;
-    font-family      : "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+    color            : <%= colors.bodyText %>;
+    background-color : <%= colors.bodyBg %>;
+    font-family      : <%= fonts.body %>;
 }
 
 .top-line{
@@ -12,22 +47,22 @@ body {
 	height: 3px;
 	background-color: #456;
 
-    background: linear-gradient(to right,  #ed0700 20%,#F7C21A 21%,#F7C21A 40%,#93C763 41%,#93C763 60%,#1296ff 61%,#1296ff 80%,#7db9e8 81%); /* W3C */
+    background: linear-gradient(to right,  <%= colors.first %> 20%,<%= colors.second %> 21%,<%= colors.second %> 40%,<%= colors.third %> 41%,<%= colors.third %> 60%,<%= colors.fourth %> 61%,<%= colors.fourth %> 80%,<%= colors.fifth %> 81%); /* W3C */
 	box-shadow: inset 0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,.9);
 }
 
 .wrapper {
-	width  : 660px;
+	width  : <%= sizes.wrapper %>px;
 	padding: 20px;
 	margin : auto;
-	background-color: #fdfdfd;
+	background-color: <%= colors.wrapperBg %>;
 }
 /*
-.first  { color: #ed0700;  }
-.second { color: #F7C21A; }
-.third  { color: #93C763;  }
-.fourth { color: #1296ff; }
-.fifth  { color: #7db9e8;  }*/
+.first  { color: <%= colors.first %>;  }
+.second { color: <%= colors.second %>; }
+.third  { color: <%= colors.third %>;  }
+.fourth { color: <%= colors.fourth %>; }
+.fifth  { color: <%= colors.fifth %>;  }*/
 
 /******************************************* Text */
 h1{
@@ -42,7 +77,7 @@ h1:before{
     height: 3px;
     width : 100%;
     content: ' ';
-    background-color: #ed0700;
+    background-color: <%= colors.first %>;
 }
 
 h2{
@@ -57,7 +92,7 @@ h2:before{
     height: 2px;
     width : 100%;
     content: ' ';
-    background-color: #F7C21A;
+    background-color: <%= colors.second %>;
 }
 
 /********************************************* header */
@@ -65,7 +100,7 @@ h2:before{
 	padding-top   : 50px;
 	margin-bottom : 50px;
 
-	font-family   : #424242;
+	font-family   : <%= colors.h1 %>;
 }
 
 .header a{
@@ -79,25 +114,25 @@ h2:before{
 
 .name{
     margin-top  : 20px;
-    font-size   : 48px;
+    font-size   : <%= sizes.h1 %>px;
     
     text-align  : center;
 	font-weight : bold;
-	color       : #424242;
+	color       : <%= colors.h1 %>;
 }
 
 .name span{
-    font-size : 24px;
+    font-size : <%= sizes.h2 %>px;
 
-    color     : #ed0700;
+    color     : <%= colors.first %>;
 }
 
 .description {
-	font-size: 16px;
+	font-size: <%= sizes.h3 %>px;
 
     text-align  : center;
     font-weight: bold;
-	color: #969696;
+	color: <%= colors.desc %>;
 }
 
 /********************************************** intro */

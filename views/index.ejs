@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title><%= Cd.proj.name %>.<%= Cd.proj.lang %></title>
     <!-- favicon -->
-    <link rel="icon" type="image/gif" href="<%= 'assets/'+Cd.proj.favicon+Cd.rId %>" />
+    <link rel="icon" type="image/gif" href="<%= Cd.proj.favicon+Cd.rId %>" />
 
     <!-- css -->
-    <%= Cd.renderAssets( Cd.assets.css ) %>
+    <%= Cd.renderCss() %>
     <!-- fonts -->
-    <%= Cd.renderFonts( Cd.assets.googleFonts ) %>
+    <%= Cd.renderGoogleFonts() %>
     <!-- js -->
-    <%= Cd.renderAssets( Cd.assets.js ) %>
+    <%= Cd.renderJs() %>
 
 </head>
 <body>
@@ -23,6 +23,10 @@
     <div class="wrapper">
         <!-- header -->
         <%= Cd.render('header.ejs') %>
+        <!-- /header -->
+        
+        <%= Cd.render('content.ejs') %>
+
     </div>
 </body>
 </html>

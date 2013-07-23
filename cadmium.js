@@ -8,19 +8,73 @@ var express = require('express'),
     assetFolder = 'assets',
     indexFile   = 'index.ejs';
 
-var Context = function( data ){
-    this.data;
-};
+var Context = function( siteFiles ){
+    
+    this.prototype = {
+      
+      init : function( siteFiles ){
+        //check for assets index
+        if( !siteFiles.assets ){ console.log('No assets index in conf'); return; }
+        console.log('Creating context.');
 
-Context.prototype = {
-  
+        this.proj         = siteFiles.project;
+        // this.renderAssets = this.renderAssets;
+        // this.renderFonts  = this.renderFonts;
+        this.assets       = siteFiles.assets;
+        this.render       = this.render;
+        this.rId          = '?r='+( Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) );
+
+        return this;
+      },
+
+      renderCss : function(){
+        var buff = [];
+
+        this.assets.css.forEach(function( css ){
+            buff.push( '<link href="assets/css/' + css + '" rel="stylesheet" type="text/css">' );
+        });
+
+        return buff.join('\n');
+      },
+
+      renderJs : function(){
+        var buff = [];
+
+        this.assets.js.forEach(function( js ){
+            buff.push( '<script src="assets/js/' + js + '"></script>' );
+        });
+
+        return buff.join('\n');
+      },
+
+      renderGoogleFonts : function(){
+        var buff = [];
+
+        this.assets.googleFonts.forEach(function( font ){
+            buff.push( '<link href="http://fonts.googleapis.com/css?family='+font+'" rel="stylesheet" type="text/css">' );
+        });
+
+        return buff.join('\n');
+      },
+
+      render : function( partialName, locals ){
+        return new Tm( {template: fs.readFileSync( viewsFolder+'/'+partialName, 'utf8')} ).parseSync().renderSync({Cd: this, locals: locals});
+      },
+
+      printCode : function( partial ){
+          return '<pre class="high">'+partial+'</pre>';
+      }
+
+    };
+    
+    return this.prototype.init( siteFiles );
+    
 };
 
 var Cd = {
 
   start : function(){
     cd = this;
-
     //filenames will be replaced by its content
     this.siteFiles = {
       project : 'project.json',
@@ -43,10 +97,13 @@ var Cd = {
       cd.loadSiteFiles();
 
       //set a rendering context
-      cd.createContext( cd.siteFiles );
+      // cd.createContext( cd.siteFiles );
+      cd.context = new Context( cd.siteFiles );
 
       //try to render
-      console.log('Rendering index file!');
+      console.log('Rendering style and index file!');
+      fs.writeFileSync( assetFolder+'/css/style.css', new Tm( {template: fs.readFileSync( assetFolder+'/css/style.css.ejs', 'utf8')} ).parseSync().renderSync( {Cd : cd.context} ) );
+
       renderedIndex = new Tm( {template: indexTemplate} ).parseSync().renderSync( {Cd: cd.context} );
 
       //also write file
@@ -57,6 +114,7 @@ var Cd = {
       res.send( renderedIndex );
     });
 
+    //asset static route
     app.use('/assets', express.static(__dirname + '/assets'));
     app.use(app.router);
 
@@ -80,58 +138,6 @@ var Cd = {
     this.siteFiles = buff;
 
     return this;
-  },
-
-  createContext : function( siteConf ){
-    //check for assets index
-    if( !siteConf.assets ){ console.log('No assets index in conf'); return; }
-    console.log('Creating context.');
-    var context = {};
-
-    context.proj         = siteConf.project;
-    context.renderAssets = this.renderAssets;
-    context.renderFonts  = this.renderFonts;
-    context.assets       = this.siteFiles.assets;
-    context.render       = this.render;
-    context.rId          = '?r='+( Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) );
-
-    this.context = context;
-  },
-
-  renderAssets : function( assets ){
-    var pre = '',
-        suf = '',
-        buff = [];
-
-    assets.forEach(function( asset ){
-        var type = asset.indexOf('.js') > -1 ? 'js' : 'css';
-
-        if( type === 'css' ){
-          pre = '<link href="';
-          suf = '" rel="stylesheet" type="text/css">';
-        }else{
-          pre = '<script src="';
-          suf = '"></script>';
-        }
-
-        buff.push( pre + assetFolder+'/'+type+'/'+asset +suf );
-    });
-
-    return buff.join('\n');
-  },
-
-  renderFonts : function( fonts ){
-    var buff = [];
-
-    fonts.forEach(function( font ){
-      buff.push( '<link href="http://fonts.googleapis.com/css?family='+font+'" rel="stylesheet" type="text/css">' );
-    });
-
-    return buff.join('\n');
-  },
-
-  render : function( partialName, locals ){
-    return new Tm( {template: fs.readFileSync( viewsFolder+'/'+partialName, 'utf8')} ).parseSync().renderSync({Cd: this.context, locals: locals});
   }
 };
 
