@@ -1,0 +1,17 @@
+{
+	"css" : [
+		"reset.css",
+		"style.css",
+		"rainbow.css"
+	],
+
+	"js" : [
+		"vendor/neon.js",
+		"vendor/jquery.js",
+		"vendor/rainbow-custom.min.js"
+	],
+
+	"googleFonts" : [
+		"Montserrat:400,700"
+	]
+}
