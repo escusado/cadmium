@@ -4,9 +4,10 @@
 	],
 
 	"css" : [
+		"vendor/highlight/monokai.css",
+		"vendor/elastic.css",
 		"reset.css",
 		"button.css",
-		"vendor/highlight/monokai.css",
 
 		"style.css"
 	],
@@ -15,6 +16,8 @@
 		"vendor/neon.js",
 		"vendor/jquery.js",
 		"vendor/ZeroClipboard.min.js",
+		"vendor/elastic.js",
+
 
 		"Cd.js"
 	],

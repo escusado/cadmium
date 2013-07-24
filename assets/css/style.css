@@ -12,6 +12,8 @@ body {
 
     font-family      : "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
 
+    font-size        : 100%;
+
 }
 
 
@@ -46,17 +48,15 @@ body {
 
 }
 
-/*
 
-.first  { color: #ed0700;  }
 
-.second { color: #F7C21A; }
+a {
 
-.third  { color: #93C763;  }
+	color : #ed0700;
 
-.fourth { color: #1296ff; }
+	font-weight: bold;
 
-.fifth  { color: #7db9e8;  }*/
+}
 
 
 
@@ -536,13 +536,7 @@ h2:before{
 
 
 
-a {
 
-	color : #f26166;
-
-	font-weight: bold;
-
-}
 
 
 

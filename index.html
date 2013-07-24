@@ -10,7 +10,7 @@
 
     <!-- favicon -->
 
-    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?r=4113" />
+    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?r=46d3" />
 
     <!-- cdn -->
 
@@ -18,9 +18,10 @@
 
     <!-- css -->
 
-    <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/vendor/highlight/monokai.css" rel="stylesheet" type="text/css">
+<link href="assets/css/vendor/elastic.css" rel="stylesheet" type="text/css">
+<link href="assets/css/reset.css" rel="stylesheet" type="text/css">
 <link href="assets/css/button.css" rel="stylesheet" type="text/css">
-<link href="assets/css/vendor/highlight/monokai.css" rel="stylesheet" type="text/css">
 <link href="assets/css/style.css" rel="stylesheet" type="text/css">
 
     <!-- fonts -->
@@ -32,6 +33,7 @@
     <script src="assets/js/vendor/neon.js"></script>
 <script src="assets/js/vendor/jquery.js"></script>
 <script src="assets/js/vendor/ZeroClipboard.min.js"></script>
+<script src="assets/js/vendor/elastic.js"></script>
 <script src="assets/js/Cd.js"></script>
 
 
@@ -82,119 +84,119 @@
 
 
 
-<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="
+    <div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="
 
+    
 
+    //Define Class:
 
-//Define Class:
+    Class('Minion')({
 
-Class('Minion')({
+      prototype : {
 
-  prototype : {
 
 
+        name : null,
 
-    name : null,
+        position : null,
 
-    position : null,
 
 
+        init : function ( name ){
 
-    init : function ( name ){
+          this.name = name;
 
-      this.name = name;
+          this.position = this.name === 'Lumbergh' ? 'Boss' : 'Drone';
 
-      this.position = this.name === 'Lumbergh' ? 'Boss' : 'Drone';
 
 
+          return this;
 
-      return this;
+        },
 
-    },
 
 
+        getIdentity : function(){
 
-    getIdentity : function(){
+            return this.position + ' - ' + this.name;
 
-        return this.position + ' - ' + this.name;
+        }
 
-    }
+      }
 
-  }
+    });
 
-});
+    //Instance it
 
-//Instance it
+    var gibbonsTheDrone = new Minion('Dave');
 
-var gibbonsTheDrone = new Minion('Dave');
+    var lumberghTheBoss = new Minion('Lumbergh');
 
-var lumberghTheBoss = new Minion('Lumbergh');
+    //Consume it
 
-//Consume it
+    console.log( gibbonsTheDrone.getIdentity() );
 
-console.log( gibbonsTheDrone.getIdentity() );
+    console.log( lumberghTheBoss.getIdentity() );
 
-console.log( lumberghTheBoss.getIdentity() );
+    
 
+    " ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
 
+    
 
-" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+    <span class="comment">//Define Class:</span>
 
+    Class(<span class="string">'Minion'</span>)({
 
+      prototype : {
 
-<span class="comment">//Define Class:</span>
 
-Class(<span class="string">'Minion'</span>)({
 
-  prototype : {
+        name : <span class="literal">null</span>,
 
+        position : <span class="literal">null</span>,
 
 
-    name : <span class="literal">null</span>,
 
-    position : <span class="literal">null</span>,
+        init : <span class="function"><span class="keyword">function</span> <span class="params">( name )</span>{</span>
 
+          <span class="keyword">this</span>.name = name;
 
+          <span class="keyword">this</span>.position = <span class="keyword">this</span>.name === <span class="string">'Lumbergh'</span> ? <span class="string">'Boss'</span> : <span class="string">'Drone'</span>;
 
-    init : <span class="function"><span class="keyword">function</span> <span class="params">( name )</span>{</span>
 
-      <span class="keyword">this</span>.name = name;
 
-      <span class="keyword">this</span>.position = <span class="keyword">this</span>.name === <span class="string">'Lumbergh'</span> ? <span class="string">'Boss'</span> : <span class="string">'Drone'</span>;
+          <span class="keyword">return</span> <span class="keyword">this</span>;
 
+        },
 
 
-      <span class="keyword">return</span> <span class="keyword">this</span>;
 
-    },
+        getIdentity : <span class="keyword">function</span>(){
 
+            <span class="keyword">return</span> <span class="keyword">this</span>.position + <span class="string">' - '</span> + <span class="keyword">this</span>.name;
 
+        }
 
-    getIdentity : <span class="keyword">function</span>(){
+      }
 
-        <span class="keyword">return</span> <span class="keyword">this</span>.position + <span class="string">' - '</span> + <span class="keyword">this</span>.name;
+    });
 
-    }
+    <span class="comment">//Instance it</span>
 
-  }
+    <span class="keyword">var</span> gibbonsTheDrone = <span class="keyword">new</span> Minion(<span class="string">'Dave'</span>);
 
-});
+    <span class="keyword">var</span> lumberghTheBoss = <span class="keyword">new</span> Minion(<span class="string">'Lumbergh'</span>);
 
-<span class="comment">//Instance it</span>
+    <span class="comment">//Consume it</span>
 
-<span class="keyword">var</span> gibbonsTheDrone = <span class="keyword">new</span> Minion(<span class="string">'Dave'</span>);
+    console.log( gibbonsTheDrone.getIdentity() );
 
-<span class="keyword">var</span> lumberghTheBoss = <span class="keyword">new</span> Minion(<span class="string">'Lumbergh'</span>);
+    console.log( lumberghTheBoss.getIdentity() );
 
-<span class="comment">//Consume it</span>
+    
 
-console.log( gibbonsTheDrone.getIdentity() );
-
-console.log( lumberghTheBoss.getIdentity() );
-
-
-
-</code></pre></div>
+    </code></pre></div>
 
 
 

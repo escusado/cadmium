@@ -30,7 +30,9 @@
 
        h1 : 48,
        h2 : 24,
-       h3 : 16
+       h3 : 16,
+
+       p : 14
    };
 
 %>
@@ -40,6 +42,7 @@ body {
     color            : <%= colors.bodyText %>;
     background-color : <%= colors.bodyBg %>;
     font-family      : <%= fonts.body %>;
+    font-size        : 100%;
 }
 
 .top-line{
@@ -57,12 +60,11 @@ body {
 	margin : auto;
 	background-color: <%= colors.wrapperBg %>;
 }
-/*
-.first  { color: <%= colors.first %>;  }
-.second { color: <%= colors.second %>; }
-.third  { color: <%= colors.third %>;  }
-.fourth { color: <%= colors.fourth %>; }
-.fifth  { color: <%= colors.fifth %>;  }*/
+
+a {
+	color : <%= colors.first %>;
+	font-weight: bold;
+}
 
 /******************************************* Text */
 h1{
@@ -302,10 +304,7 @@ h2:before{
 	font-size: 12px;
 }
 
-a {
-	color : #f26166;
-	font-weight: bold;
-}
+
 
 .unit h1 {
   margin-top: 64px;
