@@ -2,16 +2,40 @@ var express = require('express'),
     app     = express(),
     Tm      = require('thulium'),
     fs      = require('fs'),
+    Ne      = require('neon'),
+    hljs    = require('highlight.js'),
     //app
     port        = 3000,
     viewsFolder = 'views',
     assetFolder = 'assets',
     indexFile   = 'index.ejs';
 
+/****************** Thulium helper */
+var ThuliumProcessor = Ne.Class('ThuliumProcessor')({
+
+    _currentViews : [],
+
+    currentView : function () {
+      return this._currentViews[this._currentViews.length - 1];
+    },
+
+    result : function( templateString, context ){
+        var currentView;
+        currentView = new Tm( { template: templateString } );
+        this._currentViews.push(currentView);
+        currentView.parseSync().renderSync( context );
+        this._currentViews.pop();
+        return currentView.view;
+    }
+
+});
+/****************** Thulium helper */
+
+
 var Context = function( siteFiles ){
-    
+
     this.prototype = {
-      
+
       init : function( siteFiles ){
         //check for assets index
         if( !siteFiles.assets ){ console.log('No assets index in conf'); return; }
@@ -25,6 +49,10 @@ var Context = function( siteFiles ){
         this.rId          = '?r='+( Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) );
 
         return this;
+      },
+
+      renderCdn : function(){
+        return this.assets.cdn.join('\n');
       },
 
       renderCss : function(){
@@ -58,17 +86,34 @@ var Context = function( siteFiles ){
       },
 
       render : function( partialName, locals ){
-        return new Tm( {template: fs.readFileSync( viewsFolder+'/'+partialName, 'utf8')} ).parseSync().renderSync({Cd: this, locals: locals});
+        return ThuliumProcessor.result( fs.readFileSync( viewsFolder+'/'+partialName, 'utf8'), {Cd: this, locals: locals});
       },
 
       printCode : function( partial ){
-          return '<pre class="high">'+partial+'</pre>';
-      }
+        //Get thulium partial
+        var partialContent = ThuliumProcessor.currentView().renderer.capture( partial );
+        var zeroCode = '';
+        var lang = /```(\w*)/.exec( partialContent )[1];
 
+        //strip md ``` code markers
+        partialContent = partialContent.replace(/```(\w*)/,'').replace(/```/g, '');
+        
+        //save string for clipbord paste
+        zeroCode = partialContent.replace('"','\\n');
+
+        //check for specified lang
+        partialHighlight = lang ? hljs.highlight(lang, partialContent).value : hljs.highlight(partialContent).value;
+        lang = lang ? lang : 'no-highlight';
+
+
+        //wrap gift and send
+        return '<div class="code-highlight">\
+                  <div class="button code-copy" data-clipboard-text="'+zeroCode+'" ><i class="icon icon-copy"></i><div class="label">copy</div></div>\
+        <pre><code class="'+lang+'">'+ partialHighlight +'</code></pre></div>';
+      }
     };
-    
+
     return this.prototype.init( siteFiles );
-    
 };
 
 var Cd = {
@@ -102,9 +147,9 @@ var Cd = {
 
       //try to render
       console.log('Rendering style and index file!');
-      fs.writeFileSync( assetFolder+'/css/style.css', new Tm( {template: fs.readFileSync( assetFolder+'/css/style.css.ejs', 'utf8')} ).parseSync().renderSync( {Cd : cd.context} ) );
-
-      renderedIndex = new Tm( {template: indexTemplate} ).parseSync().renderSync( {Cd: cd.context} );
+      fs.writeFileSync( assetFolder+'/css/style.css', ThuliumProcessor.result( fs.readFileSync( assetFolder+'/css/style.css.ejs', 'utf8'),  {Cd : cd.context}) );
+      // renderedIndex = new Tm( {template: indexTemplate} ).parseSync().renderSync( {Cd: cd.context} );
+      renderedIndex = ThuliumProcessor.result(indexTemplate, {Cd: cd.context});
 
       //also write file
       fs.writeFileSync( 'index.html', renderedIndex );

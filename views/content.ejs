@@ -4,6 +4,7 @@
     <p>Neon packs a DSL for Class creation, that helps in making programs following an object oriented design.</p>
 
 <%= Cd.printCode( function(){ %>
+```javascript
 //Define Class:
 Class('Minion')({
   prototype : {
@@ -29,6 +30,7 @@ var lumberghTheBoss = new Minion('Lumbergh');
 //Consume it
 console.log( gibbonsTheDrone.getIdentity() );
 console.log( lumberghTheBoss.getIdentity() );
+```
 <% }) %>
 
     <h2>What is not</h2>

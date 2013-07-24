@@ -1,55 +1,215 @@
 <!doctype html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>Neon.js</title>
+
     <!-- favicon -->
-    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?r=c0ab" />
+
+    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?r=cba4" />
+
+    <!-- cdn -->
+
+    <link href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css' rel='stylesheet'>
 
     <!-- css -->
+
     <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
-<link href="assets/css/style.css" rel="stylesheet" type="text/css">
 <link href="assets/css/button.css" rel="stylesheet" type="text/css">
-<link href="assets/css/rainbow.css" rel="stylesheet" type="text/css">
+<link href="assets/css/vendor/highlight/monokai.css" rel="stylesheet" type="text/css">
+<link href="assets/css/style.css" rel="stylesheet" type="text/css">
+
     <!-- fonts -->
+
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
     <!-- js -->
+
     <script src="assets/js/vendor/neon.js"></script>
 <script src="assets/js/vendor/jquery.js"></script>
-<script src="assets/js/vendor/rainbow-custom.min.js"></script>
+<script src="assets/js/vendor/ZeroClipboard.min.js"></script>
+<script src="assets/js/Cd.js"></script>
+
+
 
 </head>
+
 <body>
+
     <!-- fork me ribbon -->
+
     <a href="https://github.com/azendal/neon"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+
     <!-- top color bar -->    
+
     <div class="top-line"></div>
+
     
+
     <div class="wrapper">
+
         <!-- header -->
+
         <div class="header">
+
   <a href="http://freshout-dev.github.io/neon">
+
     <img class="tm-icon" src="assets/img/Ne.png" alt="Neon">
+
     <div class="name">Neon<span>.js</span></div>
+
     <div class="description">JavaScript DSL for Classical Inheritance</div>
+
   </a>
+
 </div>
+
         <!-- /header -->
+
         
+
         <div class="content">
+
     
+
     <h1>What is it?</h1>
+
     <p>Neon packs a DSL for Class creation, that helps in making programs following an object oriented design.</p>
 
-<pre class="high">function (){ 
-tm.print("\n//Define Class:\nClass('Minion')({\n  prototype : {\n\n    name : null,\n    position : null,\n\n    init : function ( name ){\n      this.name = name;\n      this.position = this.name === 'Lumbergh' ? 'Boss' : 'Drone';\n\n      return this;\n    },\n\n    getIdentity : function(){\n        return this.position + ' - ' + this.name;\n    }\n  }\n});\n//Instance it\nvar gibbonsTheDrone = new Minion('Dave');\nvar lumberghTheBoss = new Minion('Lumbergh');\n//Consume it\nconsole.log( gibbonsTheDrone.getIdentity() );\nconsole.log( lumberghTheBoss.getIdentity() );\n");
- }</pre>
+
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="
+
+
+
+//Define Class:
+
+Class('Minion')({
+
+  prototype : {
+
+
+
+    name : null,
+
+    position : null,
+
+
+
+    init : function ( name ){
+
+      this.name = name;
+
+      this.position = this.name === 'Lumbergh' ? 'Boss' : 'Drone';
+
+
+
+      return this;
+
+    },
+
+
+
+    getIdentity : function(){
+
+        return this.position + ' - ' + this.name;
+
+    }
+
+  }
+
+});
+
+//Instance it
+
+var gibbonsTheDrone = new Minion('Dave');
+
+var lumberghTheBoss = new Minion('Lumbergh');
+
+//Consume it
+
+console.log( gibbonsTheDrone.getIdentity() );
+
+console.log( lumberghTheBoss.getIdentity() );
+
+
+
+" ><i class="icon icon-copy"></i><div class="label">copy</div></div>        <pre><code class="javascript">
+
+
+
+<span class="comment">//Define Class:</span>
+
+Class(<span class="string">'Minion'</span>)({
+
+  prototype : {
+
+
+
+    name : <span class="literal">null</span>,
+
+    position : <span class="literal">null</span>,
+
+
+
+    init : <span class="function"><span class="keyword">function</span> <span class="params">( name )</span>{</span>
+
+      <span class="keyword">this</span>.name = name;
+
+      <span class="keyword">this</span>.position = <span class="keyword">this</span>.name === <span class="string">'Lumbergh'</span> ? <span class="string">'Boss'</span> : <span class="string">'Drone'</span>;
+
+
+
+      <span class="keyword">return</span> <span class="keyword">this</span>;
+
+    },
+
+
+
+    getIdentity : <span class="keyword">function</span>(){
+
+        <span class="keyword">return</span> <span class="keyword">this</span>.position + <span class="string">' - '</span> + <span class="keyword">this</span>.name;
+
+    }
+
+  }
+
+});
+
+<span class="comment">//Instance it</span>
+
+<span class="keyword">var</span> gibbonsTheDrone = <span class="keyword">new</span> Minion(<span class="string">'Dave'</span>);
+
+<span class="keyword">var</span> lumberghTheBoss = <span class="keyword">new</span> Minion(<span class="string">'Lumbergh'</span>);
+
+<span class="comment">//Consume it</span>
+
+console.log( gibbonsTheDrone.getIdentity() );
+
+console.log( lumberghTheBoss.getIdentity() );
+
+
+
+</code></pre></div>
+
+
 
     <h2>What is not</h2>
+
     <p>The philosophy is that it should not try to emulate other languages, so it preserves the Javascript good parts, but with a nicer syntax to create classes that ensure interfaces and include reusable functionality as modules.</p>
+
+
 
 </div>
 
+
+
     </div>
+
 </body>
+
 </html>

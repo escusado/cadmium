@@ -228,7 +228,26 @@ h2:before{
 	transition: max-height 1s, opacity 1s, margin 1s, padding 1s;
 }
 
+/***************************************** Code box */
 
+.code-highlight {
+	position        : relative;
+}
+
+.code-highlight code{
+	border-radius   : 5px;	
+}
+/* Copy Button */
+.code-copy{
+	position : absolute;
+	top : 5px;
+	right : 5px;
+
+	background-color : <%= colors.second %>;
+}
+.code-copy .icon-copy {	margin-left: 4px; }
+
+/*
 .code{
 	font-family: 'Courier New';
 	width: 615px;
@@ -264,7 +283,7 @@ h2:before{
 .compile-example{
     display: none;
 }
-
+*/
 .run-button{
 	position: absolute;
 	right: 15px;

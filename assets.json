@@ -1,15 +1,22 @@
 {
+	"cdn": [
+		"<link href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css' rel='stylesheet'>"
+	],
+
 	"css" : [
 		"reset.css",
-		"style.css",
 		"button.css",
-		"rainbow.css"
+		"vendor/highlight/monokai.css",
+
+		"style.css"
 	],
 
 	"js" : [
 		"vendor/neon.js",
 		"vendor/jquery.js",
-		"vendor/rainbow-custom.min.js"
+		"vendor/ZeroClipboard.min.js",
+
+		"Cd.js"
 	],
 
 	"googleFonts" : [
