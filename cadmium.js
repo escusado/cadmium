@@ -108,7 +108,7 @@ var Context = function( siteFiles ){
 
         //wrap gift and send
         return '<div class="code-highlight">\
-                  <div class="button code-copy" data-clipboard-text="'+zeroCode+'" ><i class="icon icon-copy"></i><div class="label">copy</div></div>\
+                  <div class="button code-copy" data-clipboard-text="'+zeroCode+'" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>\
         <pre><code class="'+lang+'">'+ partialHighlight +'</code></pre></div>';
       }
     };

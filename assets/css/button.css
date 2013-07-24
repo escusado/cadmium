@@ -26,7 +26,8 @@
     font-weight: 700;
 }
 
-.button:hover .shade{
+.button:hover .shade,
+.button.zeroclipboard-is-hover .shade{
       background-color: rgba(255,255,255,.2);
       position : absolute;
       top : -2px;
@@ -36,11 +37,14 @@
       border-radius : 2px;
 }
 
-.button:active {
+.button:active,
+.button.zeroclipboard-is-active {
     box-shadow : 0 1px 0 0 rgba(255, 255, 255, 0.5) inset, -1px 0 0 0 rgba(255, 255, 255, 0.3) inset, 0 -1px 0 0 rgba(0, 0, 0, 0.3) inset, 1px 0 0 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 1px rgba(0, 0, 0, 0.5);
     padding : 1px 6px 2px 6px;
     margin-top: 1px;
 }
+
+.button.zeroclipboard-is-active .shade,
 .button:active .shade{
     background-color: rgba(255,255,255,.5);
 }
