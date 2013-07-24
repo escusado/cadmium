@@ -230,73 +230,7 @@ h2:before{
 
 
 
-/********************************************** title */
 
-
-
-.title {
-
-	font-size: 24px;
-
-  margin-top: 32px;
-
-	/*font-weight: bold;*/
-
-}
-
-
-
-.title.h1{
-
-	font-family : 'Montserrat', sans-serif;
-
-	font-size: 32px;
-
-	font-weight: bold;
-
-  margin-top: 32px;
-
-}
-
-
-
-.title.first{
-
-	border-bottom: 2px solid #3366ff;
-
-}
-
-
-
-.title.second{
-
-	border-bottom: 2px solid #ff3366;
-
-}
-
-
-
-.title.third{
-
-	border-bottom: 2px solid #ff6633;
-
-}
-
-
-
-.title.fourth{
-
-	border-bottom: 2px solid #93C763;
-
-}
-
-
-
-.title.fifth{
-
-	border-bottom: 2px solid #ffcc33;
-
-}
 
 
 

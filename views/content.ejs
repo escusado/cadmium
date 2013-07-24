@@ -1,39 +1,13 @@
 <div class="content">
-    
-    <h1>What is it?</h1>
-    <p>Neon packs a DSL for Class creation, that helps in making programs following an object oriented design.</p>
+    <!-- library presentation -->
+    <%= Cd.render('intro.ejs') %>
 
-    <%= Cd.printCode( function(){ %>
-    ```javascript
-    //Define Class:
-    Class('Minion')({
-      prototype : {
+    <!-- quick usage -->
 
-        name : null,
-        position : null,
+    <!-- sandbox -->
 
-        init : function ( name ){
-          this.name = name;
-          this.position = this.name === 'Lumbergh' ? 'Boss' : 'Drone';
+    <!-- examples -->
 
-          return this;
-        },
-
-        getIdentity : function(){
-            return this.position + ' - ' + this.name;
-        }
-      }
-    });
-    //Instance it
-    var gibbonsTheDrone = new Minion('Dave');
-    var lumberghTheBoss = new Minion('Lumbergh');
-    //Consume it
-    console.log( gibbonsTheDrone.getIdentity() );
-    console.log( lumberghTheBoss.getIdentity() );
-    ```
-    <% }) %>
-
-    <h2>What is not</h2>
-    <p>The philosophy is that it should not try to emulate other languages, so it preserves the Javascript good parts, but with a nicer syntax to create classes that ensure interfaces and include reusable functionality as modules.</p>
+    <!-- footer -->
 
 </div>
