@@ -21,7 +21,7 @@ var ThuliumProcessor = Ne.Class('ThuliumProcessor')({
       return this._currentViews[this._currentViews.length - 1];
     },
 
-    result : function( templateString, context ){
+    result : function( templateString, context ){        
         var currentView;
         currentView = new Tm( { template: templateString } );
         this._currentViews.push(currentView);
@@ -33,7 +33,7 @@ var ThuliumProcessor = Ne.Class('ThuliumProcessor')({
 });
 
 /****************** Cadmium context */
-var Context = Ne.Class({
+var Context = Ne.Class('Context')({
   prototype : {
 
       init : function( siteFiles ){
@@ -42,8 +42,6 @@ var Context = Ne.Class({
         console.log('Creating context.');
 
         this.proj         = siteFiles.project;
-        // this.renderAssets = this.renderAssets;
-        // this.renderFonts  = this.renderFonts;
         this.assets       = siteFiles.assets;
         this.render       = this.render;
         this.rId          = '?r='+( Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) );
@@ -115,7 +113,7 @@ var Context = Ne.Class({
         return '<div class="code-highlight">\
                   <div class="button code-copy" data-clipboard-text="'+zeroCode+'" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>\
         <pre><code class="'+lang+'">'+ partialHighlight +'</code></pre></div>';
-      }    
+      }
   }
 });
 
@@ -123,36 +121,31 @@ var Cd = {
 
   start : function(){
     cd = this;
-    //filenames will be replaced by its content
-    this.siteFiles = {
-      project : 'project.json',
-      assets  : 'assets.json'
-    };
 
     //init route
     app.get('/', function( req, res ){
       var renderedIndex = '',
           indexFilePath = viewsFolder+'/'+indexFile,
-          indexTemplate = fs.readFileSync( indexFilePath, 'utf8');
+          indexTemplate = fs.readFileSync( indexFilePath, 'utf8'),
+          context = {},
+          siteFiles = {};
 
       //reload config
-      cd.siteFiles = {
+      siteFiles = {
         project : projectFile,
         assets  : assetsFile
       };
-
       //read config and data
-      cd.loadSiteFiles();
-
+      siteFiles = cd.loadSiteFiles( siteFiles );
       //set a rendering context
       // cd.createContext( cd.siteFiles );
-      cd.context = new Context( cd.siteFiles );
+      context = new Context( siteFiles );
 
       //try to render
       console.log('Rendering style and index file!');
-      fs.writeFileSync( assetFolder+'/css/style.css', ThuliumProcessor.result( fs.readFileSync( assetFolder+'/css/style.css.ejs', 'utf8'),  {Cd : cd.context}) );
-      // renderedIndex = new Tm( {template: indexTemplate} ).parseSync().renderSync( {Cd: cd.context} );
-      renderedIndex = ThuliumProcessor.result(indexTemplate, {Cd: cd.context});
+      fs.writeFileSync( assetFolder+'/css/style.css', ThuliumProcessor.result( fs.readFileSync( assetFolder+'/css/style.css.ejs', 'utf8'),  {Cd : context}) );
+      // renderedIndex = new Tm( {template: indexTemplate} ).parseSync().renderSync( {Cd: context} );
+      renderedIndex = ThuliumProcessor.result(indexTemplate, {Cd: context});
 
       //also write file
       fs.writeFileSync( 'index.html', renderedIndex );
@@ -171,21 +164,18 @@ var Cd = {
     return;
   },
 
-  loadSiteFiles : function(){
-    var cd = this,
-        path = '',
+  loadSiteFiles : function( siteFiles ){
+    var path = '',
         buff = {};
 
-    Object.keys(this.siteFiles).forEach(function( file ){
-      if(typeof cd.siteFiles[file] !== 'string'){return;} //i'm really sory about this, but an [object obecjt keeps poppung up]
-      path = cd.siteFiles[file];
+    Object.keys(siteFiles).forEach(function( file ){
+      if(typeof siteFiles[file] !== 'string'){return;} //i'm really sory about this, but an [object obecjt keeps poppung up]
+      path = siteFiles[file];
       console.log('Parsing '+path);
       buff[file] = JSON.parse( fs.readFileSync( path, 'utf8') );
     });
 
-    this.siteFiles = buff;
-
-    return this;
+    return buff;
   }
 };
 
