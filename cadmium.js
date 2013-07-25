@@ -8,9 +8,11 @@ var express = require('express'),
     port        = 3000,
     viewsFolder = 'views',
     assetFolder = 'assets',
-    indexFile   = 'index.ejs';
+    indexFile   = 'index.ejs',
+    projectFile = 'project.json',
+    assetsFile  = 'assets.json';
 
-/****************** Thulium helper */
+/****************** Thulium Processor Helper */
 var ThuliumProcessor = Ne.Class('ThuliumProcessor')({
 
     _currentViews : [],
@@ -29,12 +31,10 @@ var ThuliumProcessor = Ne.Class('ThuliumProcessor')({
     }
 
 });
-/****************** Thulium helper */
 
-
-var Context = function( siteFiles ){
-
-    this.prototype = {
+/****************** Cadmium context */
+var Context = Ne.Class({
+  prototype : {
 
       init : function( siteFiles ){
         //check for assets index
@@ -115,11 +115,9 @@ var Context = function( siteFiles ){
         return '<div class="code-highlight">\
                   <div class="button code-copy" data-clipboard-text="'+zeroCode+'" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>\
         <pre><code class="'+lang+'">'+ partialHighlight +'</code></pre></div>';
-      }
-    };
-
-    return this.prototype.init( siteFiles );
-};
+      }    
+  }
+});
 
 var Cd = {
 
@@ -139,8 +137,8 @@ var Cd = {
 
       //reload config
       cd.siteFiles = {
-        project : 'project.json',
-        assets  : 'assets.json'
+        project : projectFile,
+        assets  : assetsFile
       };
 
       //read config and data
