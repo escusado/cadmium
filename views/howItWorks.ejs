@@ -1,0 +1,71 @@
+
+<h1>Tweak it!</h1>
+<p>Cd its ment to be mess with. At this point the only thing you have to do is to customize the theme, content and data for your project, hack it at your convenience :)</p>
+
+<h2>How it works?</h2>
+<p>Cd has a very simple json and template system, it uses <a href="http://freshout-dev.github.io/thulium">Thulium</a> implementation of EJS to compile its views.</p>
+
+<h2>Config files</h2>
+<p>Cd uses 2 json files to work:</p>
+
+<h3>project.json</h3>
+<p>This json file will hold your project data its very self explinatory:</p>
+<%= Cd.printCode( function(){ %>
+    ```javascript
+{
+  "name"      : "Cadmium",
+  "lang"      : "js",
+  "desc"      : "A simple theme for your project",
+  "url"       : "http://escusado.github.io/cadmium",
+  "githubUrl" : "https://github.com/escusado/cadmium",
+  "forkColor" : "orange",
+  "favicon"   : "assets/img/favicon.gif",
+  "icon"      : "assets/img/icon.png"
+}
+
+    ```
+<% }) %>
+<p>One cool thing is that if you add entries to this file, they will be peresent into the Cd.proj Api.</p>
+    
+<h3>assets.json</h3>
+<p>This file will contain the css, js, google fonts and any cdn file you need to load on your site:</p>
+<%= Cd.printCode( function(){ %>
+```javascript
+{
+  "cdn": [
+    "http://code.jquery.com/jquery-2.0.3.min.js"
+  ],
+
+  "css" : [
+    "vendor/highlight/monokai.css",
+    "reset.css",
+    "style.css"
+  ],
+
+  "js" : [
+    "vendor/neon.js",
+    "app/myScriptFile.js",
+  ],
+
+  "googleFonts" : [
+    "Montserrat:400,700"
+  ]
+}
+    ```
+<% }) %>
+<p>So you can render them by using the Cd.renderCdn(), Cd.renderCss() and Cd.renderJs() Api calls:</p>
+    
+<h1>EJS</h1>
+<p>Cd uses EJS for the templates, we are using the Thulium flavor syntax:</p>
+<%= Cd.printCode( function(){ %>
+```django
+<!-- Execute code -->
+<? var myVariable = 'This IS MY VariablE' ?>
+
+<!-- print values -->
+<div><?= myVariable.toLowercase() ?></div>
+
+<!-- Renders -->
+<div>this is my variable</div>
+```
+<% }) %>

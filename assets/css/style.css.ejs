@@ -2,11 +2,11 @@
 
    //colors
    var colors = {
-      first  : '#ed0700',
-      second : '#F7C21A',
+      first  : '#669933',
+      second : '#ffcc00',
       third  : '#93C763',
       fourth : '#1296ff',
-      fifth  : '#7db9e8',
+      fifth  : '#ED0700',
 
       bodyBg    : '#eeeeee',
       wrapperBg : '#fdfdfd',
@@ -39,62 +39,83 @@
 
 /******************************************** Theme */
 body {
+    font-size        : 100%;
+    
+    font-family      : <%= fonts.body %>;
     color            : <%= colors.bodyText %>;
     background-color : <%= colors.bodyBg %>;
-    font-family      : <%= fonts.body %>;
-    font-size        : 100%;
 }
 
 .top-line{
 	width: 100%;
 	height: 3px;
-	background-color: #456;
 
+	background-color: #456;
     background: linear-gradient(to right,  <%= colors.first %> 20%,<%= colors.second %> 21%,<%= colors.second %> 40%,<%= colors.third %> 41%,<%= colors.third %> 60%,<%= colors.fourth %> 61%,<%= colors.fourth %> 80%,<%= colors.fifth %> 81%); /* W3C */
 	box-shadow: inset 0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,.9);
 }
 
 .wrapper {
-	width  : <%= sizes.wrapper %>px;
-	padding: 20px;
-	margin : auto;
-	background-color: <%= colors.wrapperBg %>;
+	width   : <%= sizes.wrapper %>px;
+	padding : 20px;
+	margin  : auto;
+	
+	background-color : <%= colors.wrapperBg %>;
+	border-radius    : 0 0 3px 3px;
 }
 
 a {
-	color : <%= colors.first %>;
-	font-weight: bold;
+	font-weight : bold;
+	color       : <%= colors.first %>;
 }
 
 /******************************************* Text */
 h1{
-    text-align: left;
-    position: relative;
+    position   : relative;
+    text-align : left;
 }
 
 h1:before{
-    position: absolute;
-    bottom : 0;
-    left : 0;
-    height: 3px;
-    width : 100%;
-    content: ' ';
+    height   : 3px;
+    width    : 100%;
+    position : absolute;
+    bottom   : -5px;
+    left     : 0;
+    content  : ' ';
+
     background-color: <%= colors.first %>;
 }
 
 h2{
-    text-align: left;
-    position: relative;
+    text-align : left;
+    position   : relative;
 }
 
 h2:before{
-    position: absolute;
-    bottom : 0;
-    left : 0;
-    height: 2px;
-    width : 100%;
+    height   : 2px;
+    width    : 100%;
+    position : absolute;
+    bottom   : -5px;
+    left     : 0;
     content: ' ';
+
     background-color: <%= colors.second %>;
+}
+
+h3{
+    text-align : left;
+    position   : relative;
+}
+
+h3:before{
+    position : absolute;
+    bottom   : -4px;
+    left     : 0;
+    height   : 2px;
+    width    : 100%;
+    content  : ' ';
+
+    background-color: <%= colors.third %>;
 }
 
 /********************************************* header */
@@ -126,15 +147,15 @@ h2:before{
 .name span{
     font-size : <%= sizes.h2 %>px;
 
-    color     : <%= colors.first %>;
+    color     : <%= colors.second %>;
 }
 
 .description {
-	font-size: <%= sizes.h3 %>px;
+	font-size : <%= sizes.h3 %>px;
 
     text-align  : center;
-    font-weight: bold;
-	color: <%= colors.desc %>;
+    font-weight : bold;
+	color       : <%= colors.desc %>;
 }
 
 /********************************************** intro */
@@ -147,63 +168,20 @@ h2:before{
 }
 
 .get-code-button{
-    background-color : #f26166;
-    width: 210px;
+    height : 28px;
+    width  : 250px;
+    
+    background-color : <%= colors.second %>;
 }
 
-
-
-/********************************* .sandbox */
-
-.or{
-    text-align: center;
+.get-code-button span {
+	white-space : nowrap;
 }
 
-.try-button{
-	background-color: #ffcc33;
-	margin: auto;
-	width: 210px;
-	text-align: center;
-	left: 219px;
+.icon-github {
+	font-size : 20px;
 }
 
-.try-button span:before{
-	content : "Try it right here!";
-}
-
-.try-button span.hide:before{
-	content : "Hide sandbox";
-}
-
-.sandbox.collapsed{
-	max-height:0px;
-	opacity: 0;
-    margin: 0;
-    padding: 0 10px 0 10px;
-}
-
-.sandbox {
-	margin-top: 20px;
-	margin-bottom: 20px;
-	background-color: #fff;
-	border: 1px solid rgba(0,0,0,.1);
-	border-radius: 3px;
-	padding: 10px 10px 25px;
-
-	overflow: hidden;
-	max-height:auto;
-	opacity: 1;
-	
-	transition: max-height 1s, opacity 1s, margin 1s, padding 1s;
-}
-
-.run-button{
-	position: absolute;
-	right: 15px;
-	top : 15px;
-	font-family : 'Montserrat', sans-serif;
-	background-color: #93C763;
-}
 
 /***************************************** Code box */
 
@@ -212,8 +190,11 @@ h2:before{
 }
 
 .code-highlight code{
-	border-radius   : 5px;	
+	font-size     : 12px;
+	
+	border-radius : 5px;	
 }
+
 /* Copy Button */
 .code-copy{
 	position : absolute;
@@ -222,59 +203,30 @@ h2:before{
 
 	background-color : <%= colors.second %>;
 }
-.code-copy .icon-copy {	margin-left: 4px; }
 
-
-
-.footer {
-	padding: 20px;
-	margin-top: 20px;
-	color: #ddd;
-	background-color: #333;
-	border-radius: 3px;
-	text-align: center;
-	font-size: 12px;
+.code-copy .icon-copy {
+	margin-left: 4px;
 }
 
-
-/************************** Neon */
-.stdlib{
-	margin: 0;
-	padding: 0;
+/************************** Footer */
+.footer{
+	height     : 15px;
+	padding    : 5px;
+	margin-top : 20px;
+	font-size  : 12px;
+	
+	color            : #ddd;
+	background-color : #333;
 }
 
-.stdlib li{
-	list-style: none;
+.cd-disclamer{
+	float     : right;
+	font-size : 10px;
+	
+	color : rgba(255,255,255,.5);
 }
 
-.stdicon{
-	width: 20%
-}
-.stdtext{
-	width: 80%
-}
-
-.lib-name{
-	font-family : 'Montserrat', sans-serif;
-	font-size: 20px;
-	font-weight: bold;
-	padding: 0;
-	margin : 0;
-}
-
-.lib-name span {
-	font-size: 18px;
-	color: #f26166;
-}
-
-.fleft{
-	float: left;
-}
-
-.fright{
-	float: right;
-}
-
-.clearfix{
-	clear: both;
+.cd-disclamer a{
+	color           : rgba(255,255,255,.8);
+	text-decoration : none;
 }

@@ -1,0 +1,90 @@
+
+
+    <h1>API</h1>
+    <p>Cd has an API (Cd) that is used by EJS views files:</p>
+
+    <h3>.proj</h3>
+    <p>As mentioned before, the project.json file contains all the entries contained in the file, then you can call them as:</p>
+    <%= Cd.printCode( function(){ %>
+    ```django
+<!-- views/header.ejs -->
+<div class="header">
+  <a href="<?= Cd.proj.url ?>">
+    <img class="tm-icon" src="<?= Cd.proj.icon ?>" alt="<?= Cd.proj.name ?>">
+    <div class="name"><?= Cd.proj.name ?><span>.<?= Cd.proj.lang ?></span></div>
+    <div class="description"><?= Cd.proj.desc ?></div>
+  </a>
+</div>
+    ```
+    <% }) %>
+
+    <h3>Assets api</h3>
+    <p>As mentioned before, the assets have an special shortcut api. The assets.json will hold the assets so the api can render them using the Cd api:</p>
+
+     <%= Cd.printCode( function(){ %>
+    ```django
+<head>
+    <meta charset="UTF-8">
+    <title><?= Cd.proj.name ?>.<?= Cd.proj.lang ?></title>
+    <!-- favicon -->
+    <link rel="icon" type="image/gif" href="<?= Cd.proj.favicon+Cd.rId ?>" />
+    <!-- cdn -->
+    <?= Cd.renderCdn() ?>
+    <!-- css -->
+    <?= Cd.renderCss() ?>
+    <!-- fonts -->
+    <?= Cd.renderGoogleFonts() ?>
+    <!-- js -->
+    <?= Cd.renderJs() ?>
+</head>
+    ```
+    <% }) %>    
+
+    <h3>.printCode</h3>
+    <p>Cd uses <a href="http://softwaremaniacs.org/soft/highlight/en/">highlight.js</a> to highlight code, you need to pass the code as a githubFlavor Md format</p>
+
+<div class="code-highlight">
+    <pre>
+        <code>
+&lt;%= Cd.printCode( function(){ %&gt;
+    ```javascript
+    var myCode = 'nice eyebrows!'
+    ```
+&lt;% }) %&gt;
+        </code>
+    </pre>
+</div>
+
+    <p>You can customize which theme to use by changing the "vendor/highlight/monokai.css" in the assets.json file fo the one you like.</p>
+
+    <h3>.render</h3>
+    <p>The render Api call lets you use partials, so you can separate your views in smaller files:</p>
+
+    <p><strong>views/header.ejs</strong></p>
+     <%= Cd.printCode( function(){ %>
+    ```django
+<span>This is my header!</span>
+    ```
+    <% }) %>
+    
+    <p><strong>views/index.ejs</strong></p>
+     <%= Cd.printCode( function(){ %>
+    ```django
+<div class="header">
+    <?= Cd.render('header.ejs') ?>
+</div>
+
+<!-- Renders -->
+<div class="header"><span>This is my header!</span></div>
+    ```
+    <% }) %>
+
+<h1>The future</h1>
+<p>There are some features that will make everything more simple:</p>
+<ul>
+    <li>Browser autoreload</li>
+    <li>HTML shorthand helper</li>
+    <li>Md to HTML so you can just add your md file</li>
+</ul>
+
+<p>One simple way to do this page is to paste the HTML that Github generates for you on your repo, just tweak the code display and adjust as you need.</p>

@@ -91,16 +91,22 @@ var Context = function( siteFiles ){
 
       printCode : function( partial ){
         //Get thulium partial
-        var partialContent = ThuliumProcessor.currentView().renderer.capture( partial );
+        var partialContent = ThuliumProcessor.currentView().renderer.capture( partial ).replace(/\?/g,'%');
         var zeroCode = '';
         var lang = /```(\w*)/.exec( partialContent )[1];
 
         //strip md ``` code markers
-        partialContent = partialContent.replace(/```(\w*)/,'').replace(/```/g, '');
-        
-        //save string for clipbord paste
-        zeroCode = partialContent.replace('"','\\n');
+        partialContent = partialContent.replace(/```(\w*)/,'').replace(/```/g, '')      
 
+        //save string for clipbord paste
+        zeroCode = partialContent.replace(/\n/g,'\\n')
+
+                                       //encode html
+                                       .replace(/"/g, '&dqu;')
+                                       .replace(/'/g, '&squ;')
+                                       .replace(/&/g, "&amp;")
+                                       .replace(/</g, "&lt;")
+                                       .replace(/>/g, "&gt;");
         //check for specified lang
         partialHighlight = lang ? hljs.highlight(lang, partialContent).value : hljs.highlight(partialContent).value;
         lang = lang ? lang : 'no-highlight';

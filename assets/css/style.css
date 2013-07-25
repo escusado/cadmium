@@ -6,13 +6,15 @@
 
 body {
 
-    color            : #333333;
+    font-size        : 100%;
 
-    background-color : #eeeeee;
+    
 
     font-family      : "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
 
-    font-size        : 100%;
+    color            : #333333;
+
+    background-color : #eeeeee;
 
 }
 
@@ -24,11 +26,11 @@ body {
 
 	height: 3px;
 
+
+
 	background-color: #456;
 
-
-
-    background: linear-gradient(to right,  #ed0700 20%,#F7C21A 21%,#F7C21A 40%,#93C763 41%,#93C763 60%,#1296ff 61%,#1296ff 80%,#7db9e8 81%); /* W3C */
+    background: linear-gradient(to right,  #669933 20%,#ffcc00 21%,#ffcc00 40%,#93C763 41%,#93C763 60%,#1296ff 61%,#1296ff 80%,#ED0700 81%); /* W3C */
 
 	box-shadow: inset 0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,.9);
 
@@ -38,13 +40,17 @@ body {
 
 .wrapper {
 
-	width  : 660px;
+	width   : 660px;
 
-	padding: 20px;
+	padding : 20px;
 
-	margin : auto;
+	margin  : auto;
 
-	background-color: #fdfdfd;
+	
+
+	background-color : #fdfdfd;
+
+	border-radius    : 0 0 3px 3px;
 
 }
 
@@ -52,9 +58,9 @@ body {
 
 a {
 
-	color : #ed0700;
+	font-weight : bold;
 
-	font-weight: bold;
+	color       : #669933;
 
 }
 
@@ -64,9 +70,9 @@ a {
 
 h1{
 
-    text-align: left;
+    position   : relative;
 
-    position: relative;
+    text-align : left;
 
 }
 
@@ -74,19 +80,21 @@ h1{
 
 h1:before{
 
-    position: absolute;
+    height   : 3px;
 
-    bottom : 0;
+    width    : 100%;
 
-    left : 0;
+    position : absolute;
 
-    height: 3px;
+    bottom   : -5px;
 
-    width : 100%;
+    left     : 0;
 
-    content: ' ';
+    content  : ' ';
 
-    background-color: #ed0700;
+
+
+    background-color: #669933;
 
 }
 
@@ -94,9 +102,9 @@ h1:before{
 
 h2{
 
-    text-align: left;
+    text-align : left;
 
-    position: relative;
+    position   : relative;
 
 }
 
@@ -104,19 +112,53 @@ h2{
 
 h2:before{
 
-    position: absolute;
+    height   : 2px;
 
-    bottom : 0;
+    width    : 100%;
 
-    left : 0;
+    position : absolute;
 
-    height: 2px;
+    bottom   : -5px;
 
-    width : 100%;
+    left     : 0;
 
     content: ' ';
 
-    background-color: #F7C21A;
+
+
+    background-color: #ffcc00;
+
+}
+
+
+
+h3{
+
+    text-align : left;
+
+    position   : relative;
+
+}
+
+
+
+h3:before{
+
+    position : absolute;
+
+    bottom   : -4px;
+
+    left     : 0;
+
+    height   : 2px;
+
+    width    : 100%;
+
+    content  : ' ';
+
+
+
+    background-color: #93C763;
 
 }
 
@@ -180,7 +222,7 @@ h2:before{
 
 
 
-    color     : #ed0700;
+    color     : #ffcc00;
 
 }
 
@@ -188,15 +230,15 @@ h2:before{
 
 .description {
 
-	font-size: 16px;
+	font-size : 16px;
 
 
 
     text-align  : center;
 
-    font-weight: bold;
+    font-weight : bold;
 
-	color: #969696;
+	color       : #969696;
 
 }
 
@@ -222,103 +264,33 @@ h2:before{
 
 .get-code-button{
 
-    background-color : #f26166;
+    height : 28px;
 
-    width: 210px;
+    width  : 250px;
 
-}
+    
 
-
-
-
-
-
-
-/********************************* .sandbox */
-
-
-
-.or{
-
-    text-align: center;
+    background-color : #ffcc00;
 
 }
 
 
 
-.try-button{
+.get-code-button span {
 
-	background-color: #ffcc33;
-
-	margin: auto;
-
-	width: 210px;
-
-	text-align: center;
-
-	left: 219px;
+	white-space : nowrap;
 
 }
 
 
 
-.try-button span:before{
+.icon-github {
 
-	content : "Try it right here!";
-
-}
-
-
-
-.try-button span.hide:before{
-
-	content : "Hide sandbox";
+	font-size : 20px;
 
 }
 
 
-
-.sandbox.collapsed{
-
-	max-height:0px;
-
-	opacity: 0;
-
-    margin: 0;
-
-    padding: 0 10px 0 10px;
-
-}
-
-
-
-.sandbox {
-
-	margin-top: 20px;
-
-	margin-bottom: 20px;
-
-	background-color: #fff;
-
-	border: 1px solid rgba(0,0,0,.1);
-
-	border-radius: 3px;
-
-	padding: 10px 10px 25px;
-
-
-
-	overflow: hidden;
-
-	max-height:auto;
-
-	opacity: 1;
-
-	
-
-	transition: max-height 1s, opacity 1s, margin 1s, padding 1s;
-
-}
 
 
 
@@ -336,9 +308,15 @@ h2:before{
 
 .code-highlight code{
 
-	border-radius   : 5px;	
+	font-size     : 12px;
+
+	
+
+	border-radius : 5px;	
 
 }
+
+
 
 /* Copy Button */
 
@@ -352,216 +330,60 @@ h2:before{
 
 
 
-	background-color : #F7C21A;
-
-}
-
-.code-copy .icon-copy {	margin-left: 4px; }
-
-
-
-/*
-
-.code{
-
-	font-family: 'Courier New';
-
-	width: 615px;
-
-	padding: 10px;
-
-	height: 210px;
-
-	text-align: left;
-
-	font-size: 14px;
-
-	resize:vertical;
-
-	margin-bottom: 20px;
-
-	border-radius: 0 0 3px 3px;
-
-	border: 1px solid rgba(0,0,0,.1);
+	background-color : #ffcc00;
 
 }
 
 
 
-.highlighted-code.round {
+.code-copy .icon-copy {
 
-	position: relative;
-
-}
-
-
-
-.highlighted-code.round pre{
-
-	border-radius: 3px;
+	margin-left: 4px;
 
 }
 
 
 
-.highlighted-code pre{
+/************************** Footer */
 
-	font-family: 'Courier New';
+.footer{
 
-	border-radius: 3px 3px 0 0;
+	height     : 15px;
 
-	width: 617px;
+	padding    : 5px;
 
-}
+	margin-top : 20px;
 
+	font-size  : 12px;
 
+	
 
-.result pre{
+	color            : #ddd;
 
-	margin-top: 5px;
-
-	border-radius: 3px;
-
-}
-
-
-
-.compile-example{
-
-    display: none;
-
-}
-
-*/
-
-.run-button{
-
-	position: absolute;
-
-	right: 15px;
-
-	top : 15px;
-
-	font-family : 'Montserrat', sans-serif;
-
-	background-color: #93C763;
+	background-color : #333;
 
 }
 
 
 
-.footer {
+.cd-disclamer{
 
-	padding: 20px;
+	float     : right;
 
-	margin-top: 20px;
+	font-size : 10px;
 
-	color: #ddd;
+	
 
-	background-color: #333;
-
-	border-radius: 3px;
-
-	text-align: center;
-
-	font-size: 12px;
+	color : rgba(255,255,255,.5);
 
 }
 
 
 
+.cd-disclamer a{
 
+	color           : rgba(255,255,255,.8);
 
-
-
-.unit h1 {
-
-  margin-top: 64px;
-
-}
-
-
-
-
-
-/************************** Neon */
-
-.stdlib{
-
-	margin: 0;
-
-	padding: 0;
-
-}
-
-
-
-.stdlib li{
-
-	list-style: none;
-
-}
-
-
-
-.stdicon{
-
-	width: 20%
-
-}
-
-.stdtext{
-
-	width: 80%
-
-}
-
-
-
-.lib-name{
-
-	font-family : 'Montserrat', sans-serif;
-
-	font-size: 20px;
-
-	font-weight: bold;
-
-	padding: 0;
-
-	margin : 0;
-
-}
-
-
-
-.lib-name span {
-
-	font-size: 18px;
-
-	color: #f26166;
-
-}
-
-
-
-.fleft{
-
-	float: left;
-
-}
-
-
-
-.fright{
-
-	float: right;
-
-}
-
-
-
-.clearfix{
-
-	clear: both;
+	text-decoration : none;
 
 }

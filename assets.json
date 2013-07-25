@@ -1,28 +1,29 @@
 {
-	"cdn": [
-		"<link href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css' rel='stylesheet'>"
-	],
+  "cdn": [
+    
+  ],
 
-	"css" : [
-		"vendor/highlight/monokai.css",
-		"vendor/elastic.css",
-		"reset.css",
-		"button.css",
+  "css" : [
+    "vendor/highlight/monokai.css",
+    "vendor/font-awesome.min.css",
+    "vendor/elastic.css",
+    "reset.css",
+    "button.css",
 
-		"style.css"
-	],
+    "style.css"
+  ],
 
-	"js" : [
-		"vendor/neon.js",
-		"vendor/jquery.js",
-		"vendor/ZeroClipboard.min.js",
-		"vendor/elastic.js",
+  "js" : [
+    "vendor/neon.js",
+    "vendor/jquery.js",
+    "vendor/ZeroClipboard.min.js",
+    "vendor/elastic.js",
 
 
-		"Cd.js"
-	],
+    "Cd.js"
+  ],
 
-	"googleFonts" : [
-		"Montserrat:400,700"
-	]
+  "googleFonts" : [
+    "Montserrat:400,700"
+  ]
 }

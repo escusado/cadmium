@@ -14,11 +14,13 @@
 
 .button i{
   margin : auto;
+  vertical-align: middle;
 }
 
 .button span{
     font-size: 18px;
     font-weight: 700;
+    vertical-align: middle;
 }
 
 .button div {
