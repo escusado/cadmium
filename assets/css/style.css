@@ -70,6 +70,8 @@ a {
 
 h1{
 
+	margin-top : 50px;
+
     position   : relative;
 
     text-align : left;
@@ -169,8 +171,6 @@ h3:before{
 .header {
 
 	padding-top   : 50px;
-
-	margin-bottom : 50px;
 
 
 

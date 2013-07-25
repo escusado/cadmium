@@ -78,13 +78,47 @@
 <div class="header"><span>This is my header!</span></div>
     ```
     <% }) %>
+    
+<h1>style.css.ejs</h1>
+<p>This file contains some variables to easy color and font tweaking:</p>
 
-<h1>The future</h1>
-<p>There are some features that will make everything more simple:</p>
-<ul>
-    <li>Browser autoreload</li>
-    <li>HTML shorthand helper</li>
-    <li>Md to HTML so you can just add your md file</li>
-</ul>
+     <%= Cd.printCode( function(){ %>
+    ```javascript
+   //colors
+   var colors = {
+      first  : '#669933',
+      second : '#ffcc00',
+      third  : '#93C763',
+      fourth : '#1296ff',
+      fifth  : '#ED0700',
 
-<p>One simple way to do this page is to paste the HTML that Github generates for you on your repo, just tweak the code display and adjust as you need.</p>
+      bodyBg    : '#eeeeee',
+      wrapperBg : '#fdfdfd',
+
+      bodyText  : '#333333',
+
+      h1   : '#424242',
+      desc : '#969696'
+   };
+
+   //fonts
+   var fonts = {
+       /* Trebuchet-based sans serif stack */
+       body : '"Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif',
+       h1   : '"Montserrat", sans-serif'
+   };
+
+   //sizes
+   var sizes = {
+       wrapper : 660,
+
+       h1 : 48,
+       h2 : 24,
+       h3 : 16,
+
+       p : 14
+   };
+
+    ```
+    <% }) %>
+<p>As the index.html the style.css will be generated each time you reload the browser :)</p>
