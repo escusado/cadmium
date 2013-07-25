@@ -91,28 +91,27 @@ var Context = function( siteFiles ){
 
       printCode : function( partial ){
         //Get thulium partial
-        var partialContent = ThuliumProcessor.currentView().renderer.capture( partial ).replace(/\?/g,'%');
+        var partialContent = ThuliumProcessor.currentView().renderer.capture( partial ).replace(/\?/g,'%').replace(/^[\s]+|[\s]+$/g, '');
         var zeroCode = '';
         var lang = /```(\w*)/.exec( partialContent )[1];
 
         //strip md ``` code markers
-        partialContent = partialContent.replace(/```(\w*)/,'').replace(/```/g, '')      
+        partialContent = partialContent.replace(/```(\w*)/,'').replace(/```/g, '');
 
         //save string for clipbord paste
         zeroCode = partialContent.replace(/\n/g,'\\n')
-
                                        //encode html
                                        .replace(/"/g, '&dqu;')
                                        .replace(/'/g, '&squ;')
                                        .replace(/&/g, "&amp;")
                                        .replace(/</g, "&lt;")
                                        .replace(/>/g, "&gt;");
+        
         //check for specified lang
         partialHighlight = lang ? hljs.highlight(lang, partialContent).value : hljs.highlight(partialContent).value;
         lang = lang ? lang : 'no-highlight';
 
-
-        //wrap gift and send
+        //gift wrap it and send
         return '<div class="code-highlight">\
                   <div class="button code-copy" data-clipboard-text="'+zeroCode+'" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>\
         <pre><code class="'+lang+'">'+ partialHighlight +'</code></pre></div>';
