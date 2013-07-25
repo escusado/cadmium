@@ -38,13 +38,14 @@ var Context = Ne.Class('Context')({
 
       init : function( siteFiles ){
         //check for assets index
-        if( !siteFiles.assets ){ console.log('No assets index in conf'); return; }
+        if( !siteFiles.assets || !siteFiles.project ){ console.log('No assets index in conf'); return; }
         console.log('Creating context.');
 
+        //set proj, assets, render and rId wrapper
         this.proj         = siteFiles.project;
         this.assets       = siteFiles.assets;
         this.render       = this.render;
-        this.rId          = '?r='+( Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) );
+        this.noCache      = '?nocache='+( Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) );
 
         return this;
       },
@@ -117,10 +118,11 @@ var Context = Ne.Class('Context')({
   }
 });
 
+/************************************ Cadmium app */
 var Cd = {
 
   start : function(){
-    cd = this;
+    var cd = this;
 
     //init route
     app.get('/', function( req, res ){
@@ -135,6 +137,7 @@ var Cd = {
         project : projectFile,
         assets  : assetsFile
       };
+      
       //read config and data
       siteFiles = cd.loadSiteFiles( siteFiles );
       //set a rendering context

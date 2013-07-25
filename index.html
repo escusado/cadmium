@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Cadmium.js</title>
     <!-- favicon -->
-    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?r=49d8" />
+    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=f447" />
     <!-- cdn -->
     
     <!-- css -->
@@ -281,6 +281,16 @@ a {
 
 <span class="comment">&lt;!-- Renders --&gt;</span>
 <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"header"</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>This is my header!<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+</code></pre></div>
+
+<h3>Cd.noCache</h3>
+<p>Creates a <code>?nocache=1234</code> string containing 4 char hash, this helps if your broser has cache issues for images an assets.</p>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n&lt;link rel=&amp;dqu;icon&amp;dqu; type=&amp;dqu;image/gif&amp;dqu; href=&amp;dqu;&lt;%= Cd.proj.favicon + Cd.rId %&gt;&amp;dqu; /&gt;\n\n&lt;!-- Renders --&gt;\n&lt;link rel=&amp;dqu;icon&amp;dqu; type=&amp;dqu;image/gif&amp;dqu; href=&amp;dqu;assets/img/favicon.gif%nocache=49d8&amp;dqu;&gt;\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="django">
+<span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">type</span>=<span class="value">"image/gif"</span> <span class="attribute">href</span>=<span class="value">"&lt;%= Cd.proj.favicon + Cd.rId %&gt;"</span> /&gt;</span>
+
+<span class="comment">&lt;!-- Renders --&gt;</span>
+<span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">type</span>=<span class="value">"image/gif"</span> <span class="attribute">href</span>=<span class="value">"assets/img/favicon.gif%nocache=49d8"</span>&gt;</span>
 
 </code></pre></div>
 
