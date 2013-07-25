@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Cadmium.js</title>
     <!-- favicon -->
-    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?r=7b39" />
+    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?r=86c3" />
     <!-- cdn -->
     
     <!-- css -->
@@ -36,7 +36,7 @@
   <a href="http://escusado.github.io/cadmium">
     <img class="tm-icon" src="assets/img/icon.png" alt="Cadmium">
     <div class="name">Cadmium<span>.js</span></div>
-    <div class="description">A simple page for your project</div>
+    <div class="description">A simple Code documentation theme for your project</div>
   </a>
 </div>
         
@@ -88,10 +88,10 @@ Cd ready on port: <span class="number">3000</span>
 <h2>How it works?</h2>
 <p>Cd has a very simple json and template system, it uses <a href="http://freshout-dev.github.io/thulium">Thulium</a> implementation of EJS to compile its views.</p>
 
-<h2>Config files</h2>
+<h3>Config files</h3>
 <p>Cd uses 2 json files to work:</p>
 
-<h3>project.json</h3>
+<h4>project.json</h4>
 <p>This json file will hold your project data its very self explinatory:</p>
 <div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n    \n{\n  &amp;dqu;name&amp;dqu;      : &amp;dqu;Cadmium&amp;dqu;,\n  &amp;dqu;lang&amp;dqu;      : &amp;dqu;js&amp;dqu;,\n  &amp;dqu;desc&amp;dqu;      : &amp;dqu;A simple theme for your project&amp;dqu;,\n  &amp;dqu;url&amp;dqu;       : &amp;dqu;http://escusado.github.io/cadmium&amp;dqu;,\n  &amp;dqu;githubUrl&amp;dqu; : &amp;dqu;https://github.com/escusado/cadmium&amp;dqu;,\n  &amp;dqu;forkColor&amp;dqu; : &amp;dqu;orange&amp;dqu;,\n  &amp;dqu;favicon&amp;dqu;   : &amp;dqu;assets/img/favicon.gif&amp;dqu;,\n  &amp;dqu;icon&amp;dqu;      : &amp;dqu;assets/img/icon.png&amp;dqu;\n}\n\n    \n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
     
@@ -110,7 +110,7 @@ Cd ready on port: <span class="number">3000</span>
 </code></pre></div>
 <p>One cool thing is that if you add entries to this file, they will be peresent into the Cd.proj Api.</p>
     
-<h3>assets.json</h3>
+<h4>assets.json</h4>
 <p>This file will contain the css, js, google fonts and any cdn file you need to load on your site:</p>
 <div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n\n{\n  &amp;dqu;cdn&amp;dqu;: [\n    &amp;dqu;http://code.jquery.com/jquery-2.0.3.min.js&amp;dqu;\n  ],\n\n  &amp;dqu;css&amp;dqu; : [\n    &amp;dqu;vendor/highlight/monokai.css&amp;dqu;,\n    &amp;dqu;reset.css&amp;dqu;,\n    &amp;dqu;style.css&amp;dqu;\n  ],\n\n  &amp;dqu;js&amp;dqu; : [\n    &amp;dqu;vendor/neon.js&amp;dqu;,\n    &amp;dqu;app/myScriptFile.js&amp;dqu;,\n  ],\n\n  &amp;dqu;googleFonts&amp;dqu; : [\n    &amp;dqu;Montserrat:400,700&amp;dqu;\n  ]\n}\n    \n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
 
@@ -154,25 +154,19 @@ Cd ready on port: <span class="number">3000</span>
 </code></pre></div>
 
     <!-- Api -->
-    
-
     <h1>API</h1>
-    <p>Cd has an API (Cd) that is used by EJS views files:</p>
+<p>Cd has an API (Cd) that is used by EJS views files:</p>
 
-    <h3>.proj</h3>
-    <p>As mentioned before, the project.json file contains all the entries contained in the file, then you can call them as:</p>
-    <div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n    \n&lt;!-- views/header.ejs --&gt;\n&lt;div class=&amp;dqu;header&amp;dqu;&gt;\n  &lt;a href=&amp;dqu;&lt;%= Cd.proj.url %&gt;&amp;dqu;&gt;\n    &lt;img class=&amp;dqu;tm-icon&amp;dqu; src=&amp;dqu;&lt;%= Cd.proj.icon %&gt;&amp;dqu; alt=&amp;dqu;&lt;%= Cd.proj.name %&gt;&amp;dqu;&gt;\n    &lt;div class=&amp;dqu;name&amp;dqu;&gt;&lt;%= Cd.proj.name %&gt;&lt;span&gt;.&lt;%= Cd.proj.lang %&gt;&lt;/span&gt;&lt;/div&gt;\n    &lt;div class=&amp;dqu;description&amp;dqu;&gt;&lt;%= Cd.proj.desc %&gt;&lt;/div&gt;\n  &lt;/a&gt;\n&lt;/div&gt;\n    \n    " ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="django">
-    
-<span class="comment">&lt;!-- views/header.ejs --&gt;</span>
+<h3>.proj</h3>
+<p>As mentioned before, the project.json file contains all the entries contained in the file, then you can call them as:</p>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="&lt;!-- views/header.ejs --&gt;\n&lt;div class=&amp;dqu;header&amp;dqu;&gt;\n  &lt;a href=&amp;dqu;&lt;%= Cd.proj.url %&gt;&amp;dqu;&gt;\n    &lt;img class=&amp;dqu;tm-icon&amp;dqu; src=&amp;dqu;&lt;%= Cd.proj.icon %&gt;&amp;dqu; alt=&amp;dqu;&lt;%= Cd.proj.name %&gt;&amp;dqu;&gt;\n    &lt;div class=&amp;dqu;name&amp;dqu;&gt;&lt;%= Cd.proj.name %&gt;&lt;span&gt;.&lt;%= Cd.proj.lang %&gt;&lt;/span&gt;&lt;/div&gt;\n    &lt;div class=&amp;dqu;description&amp;dqu;&gt;&lt;%= Cd.proj.desc %&gt;&lt;/div&gt;\n  &lt;/a&gt;\n&lt;/div&gt;" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="django"><span class="comment">&lt;!-- views/header.ejs --&gt;</span>
 <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"header"</span>&gt;</span>
   <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"&lt;%= Cd.proj.url %&gt;"</span>&gt;</span>
     <span class="tag">&lt;<span class="title">img</span> <span class="attribute">class</span>=<span class="value">"tm-icon"</span> <span class="attribute">src</span>=<span class="value">"&lt;%= Cd.proj.icon %&gt;"</span> <span class="attribute">alt</span>=<span class="value">"&lt;%= Cd.proj.name %&gt;"</span>&gt;</span>
     <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"name"</span>&gt;</span><span class="vbscript">&lt;%= Cd.proj.name %&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>.<span class="vbscript">&lt;%= Cd.proj.lang %&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
     <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"description"</span>&gt;</span><span class="vbscript">&lt;%= Cd.proj.desc %&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
   <span class="tag">&lt;/<span class="title">a</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-    
-    </code></pre></div>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre></div>
 
     <h3>Assets api</h3>
     <p>As mentioned before, the assets have an special shortcut api. The assets.json will hold the assets so the api can render them using the Cd api:</p>
@@ -197,7 +191,7 @@ Cd ready on port: <span class="number">3000</span>
     </code></pre></div>    
 
     <h3>.printCode</h3>
-    <p>Cd uses <a href="http://softwaremaniacs.org/soft/highlight/en/">highlight.js</a> to highlight code, you need to pass the code as a githubFlavor Md format</p>
+    <p>Cd uses <a href="http://softwaremaniacs.org/soft/highlight/en/">highlight.js</a> to highlight code, you need to pass the code as a <a href="https://help.github.com/articles/github-flavored-markdown">Github flavored Markdown</a> format using any of the <a href="http://softwaremaniacs.org/media/soft/highlight/test.html">supported highlight.js</a> formats:</p>
 
 <div class="code-highlight">
     <pre>

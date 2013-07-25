@@ -5,10 +5,10 @@
 <h2>How it works?</h2>
 <p>Cd has a very simple json and template system, it uses <a href="http://freshout-dev.github.io/thulium">Thulium</a> implementation of EJS to compile its views.</p>
 
-<h2>Config files</h2>
+<h3>Config files</h3>
 <p>Cd uses 2 json files to work:</p>
 
-<h3>project.json</h3>
+<h4>project.json</h4>
 <p>This json file will hold your project data its very self explinatory:</p>
 <%= Cd.printCode( function(){ %>
     ```javascript
@@ -27,7 +27,7 @@
 <% }) %>
 <p>One cool thing is that if you add entries to this file, they will be peresent into the Cd.proj Api.</p>
     
-<h3>assets.json</h3>
+<h4>assets.json</h4>
 <p>This file will contain the css, js, google fonts and any cdn file you need to load on your site:</p>
 <%= Cd.printCode( function(){ %>
 ```javascript
