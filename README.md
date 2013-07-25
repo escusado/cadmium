@@ -1,6 +1,9 @@
 # Cadmium
-A simple Code documentation theme for your project
 
-Cadmium (Cd) is a node.js tool and a set of files that lets you create a site just like this so you can use it on Github Pages.
+A simple code documentation theme for your project or
+[Github page](http://pages.github.com/), powered by [Node.js](http://nodejs.org/).
+[View a demo](http://escusado.github.io/cadmium).
 
-http://escusado.github.io/cadmium
+It looks like this:
+
+![](https://raw.github.com/jm3/cadmium/master/screenshot.png)
