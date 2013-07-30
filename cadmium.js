@@ -145,9 +145,10 @@ var Cd = {
       context = new Context( siteFiles );
 
       //try to render
-      console.log('Rendering style and index file!');
+      console.log('Rendering style file!');
       fs.writeFileSync( assetFolder+'/css/style.css', ThuliumProcessor.result( fs.readFileSync( assetFolder+'/css/style.css.ejs', 'utf8'),  {Cd : context}) );
       // renderedIndex = new Tm( {template: indexTemplate} ).parseSync().renderSync( {Cd: context} );
+      console.log('Rendering index file!');
       renderedIndex = ThuliumProcessor.result(indexTemplate, {Cd: context});
 
       //also write file
