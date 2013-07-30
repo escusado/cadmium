@@ -1,12 +1,11 @@
+<h1><i class="icon icon-gears api-icon"></i> API</h1>
+<p>Usage for the <code>Cd</code> context API:</p>
 
+<h3 id="proj">Cd.proj.<i>attrib</i></h3>
+<p>As mentioned before, the <a href="#project-file">project.json file</a> contains the attributes used by the API:</p>
 
-    <h1>API</h1>
-    <p>Cd has an API (Cd) that is used by EJS views files:</p>
-
-    <h3>.proj</h3>
-    <p>As mentioned before, the project.json file contains all the entries contained in the file, then you can call them as:</p>
-    <%= Cd.printCode( function(){ %>
-    ```django
+<%= Cd.printCode( function(){ %>
+```django
 <!-- views/header.ejs -->
 <div class="header">
   <a href="<?= Cd.proj.url ?>">
@@ -15,14 +14,15 @@
     <div class="description"><?= Cd.proj.desc ?></div>
   </a>
 </div>
-    ```
-    <% }) %>
 
-    <h3>Assets api</h3>
-    <p>As mentioned before, the assets have an special shortcut api. The assets.json will hold the assets so the api can render them using the Cd api:</p>
+```
+<% }) %>
 
-     <%= Cd.printCode( function(){ %>
-    ```django
+<h3 id="assets">Assets api</h3>
+<p>As mentioned before, the <a href="#assets-file">assets</a> have an special shortcut api. The assets.json will hold the assets so the api can render them using the Cd api:</p>
+
+<%= Cd.printCode( function(){ %>
+```django
 <head>
     <meta charset="UTF-8">
     <title><?= Cd.proj.name ?>.<?= Cd.proj.lang ?></title>
@@ -37,11 +37,12 @@
     <!-- js -->
     <?= Cd.renderJs() ?>
 </head>
-    ```
-    <% }) %>    
 
-    <h3>.printCode</h3>
-    <p>Cd uses <a href="http://softwaremaniacs.org/soft/highlight/en/">highlight.js</a> to highlight code, you need to pass the code as a githubFlavor Md format</p>
+```
+<% }) %>    
+
+<h3 id="code-blocks">Cd.printCode</h3>
+<p>Cd uses <a target="_blank" href="http://softwaremaniacs.org/soft/highlight/en/">highlight.js</a> to highlight code, you need to pass the code as a <a href="https://help.github.com/articles/github-flavored-markdown">Github flavored Markdown</a> format using any of the <a href="http://softwaremaniacs.org/media/soft/highlight/test.html">supported highlight.js</a> formats:</p>
 
 <div class="code-highlight">
     <pre>
@@ -49,76 +50,46 @@
 &lt;%= Cd.printCode( function(){ %&gt;
     ```javascript
     var myCode = 'nice eyebrows!'
+
     ```
 &lt;% }) %&gt;
         </code>
     </pre>
 </div>
+<p>You can customize which theme to use by changing the <code>"vendor/highlight/monokai.css"</code> in the <code>assets.json</code> file fo the one you like.</p>
 
-    <p>You can customize which theme to use by changing the "vendor/highlight/monokai.css" in the assets.json file fo the one you like.</p>
+<h3 id="render">Cd.render</h3>
+<p>The render Api call lets you use partials, so you can separate your views in smaller files The api will look for your partials in the <code>/views</code> folder:</p>
 
-    <h3>.render</h3>
-    <p>The render Api call lets you use partials, so you can separate your views in smaller files:</p>
-
-    <p><strong>views/header.ejs</strong></p>
-     <%= Cd.printCode( function(){ %>
-    ```django
+<p><i class="icon icon-file"></i> <strong>views/header.ejs</strong></p>
+<%= Cd.printCode( function(){ %>
+```django
 <span>This is my header!</span>
-    ```
-    <% }) %>
+
+```
+<% }) %>
     
-    <p><strong>views/index.ejs</strong></p>
-     <%= Cd.printCode( function(){ %>
-    ```django
+<p><i class="icon icon-file"></i> <strong>views/index.ejs</strong></p>
+<%= Cd.printCode( function(){ %>
+```django
 <div class="header">
     <?= Cd.render('header.ejs') ?>
 </div>
 
 <!-- Renders -->
 <div class="header"><span>This is my header!</span></div>
-    ```
-    <% }) %>
-    
-<h1>style.css.ejs</h1>
-<p>This file contains some variables to easy color and font tweaking:</p>
 
-     <%= Cd.printCode( function(){ %>
-    ```javascript
-   //colors
-   var colors = {
-      first  : '#669933',
-      second : '#ffcc00',
-      third  : '#93C763',
-      fourth : '#1296ff',
-      fifth  : '#ED0700',
+```
+<% }) %>
 
-      bodyBg    : '#eeeeee',
-      wrapperBg : '#fdfdfd',
+<h3>Cd.noCache</h3>
+<p>Creates a <code>?nocache=1234</code> string containing 4 char hash, this helps if your broser has cache issues for images an assets.</p>
+<%= Cd.printCode( function(){ %>
+```django
+<link rel="icon" type="image/gif" href="<?= Cd.proj.favicon + Cd.rId ?>" />
 
-      bodyText  : '#333333',
+<!-- Renders -->
+<link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=49d8">
 
-      h1   : '#424242',
-      desc : '#969696'
-   };
-
-   //fonts
-   var fonts = {
-       /* Trebuchet-based sans serif stack */
-       body : '"Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif',
-       h1   : '"Montserrat", sans-serif'
-   };
-
-   //sizes
-   var sizes = {
-       wrapper : 660,
-
-       h1 : 48,
-       h2 : 24,
-       h3 : 16,
-
-       p : 14
-   };
-
-    ```
-    <% }) %>
-<p>As the index.html the style.css will be generated each time you reload the browser :)</p>
+```
+<% }) %>

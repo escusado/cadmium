@@ -1,11 +1,19 @@
 {
   "name"       : "Neon",
   "lang"       : "js",
+<<<<<<< HEAD
   "author"     : "Azendal",
   "authorLink" : "http://twitter.com/azendal",
   "desc"       : "Neon is awesome lorem lorem lorem",
   "url"        : "http://azendal.github.io/neon",
   "githubUrl"  : "https://github.com/azendal/neon",
+=======
+  "author"     : "Toily",
+  "authorLink" : "http://twitter.com/escusado",
+  "desc"       : "A simple Code documentation theme for your project",
+  "url"        : "http://escusado.github.io/cadmium",
+  "githubUrl"  : "https://github.com/escusado/cadmium",
+>>>>>>> master
   "forkColor"  : "orange",
   "favicon"    : "assets/img/favicon.gif",
   "icon"       : "assets/img/icon.png"
