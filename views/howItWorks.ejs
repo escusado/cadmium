@@ -1,14 +1,16 @@
 <h1>Tweak it!</h1>
-<p>Cd its ment to be mess with. At this point the only thing you have to do is to customize the theme, content and data for your project, hack it at your convenience :)</p>
+<p>Cd its meant to be messed with. At this point the only thing you have to do is to customize the theme, content and data for your project, or hack it at your convenience :)</p>
 
 <h2>How it works?</h2>
-<p>Cd has a very simple json and template system, it uses <a target="_blank" href="http://freshout-dev.github.io/thulium">Thulium</a> implementation of EJS to compile its views.</p>
+<p>Cd has a very simple json and template system, it uses <a target="_blank" href="http://freshout-dev.github.io/thulium">Thulium</a> (an template renderer of the EJS syntax) to compile its views.</p>
 
 <h3><i class="icon icon-folder-open"></i> /views</h3>
-<p>The views are stored into the <code>views</code> folder, Cd by default will look for <code>views/index.ejs</code> to render it, so start there, you can <a href="#render">use partials</a> to organize your views.</p>
+<p>The views are stored into the <code>views</code> folder. Cd by default will look for <code>views/index.ejs</code> to render, so start there.
+You can also <a href="#render">use partials</a> to organize your views.</p>
 
 <h4>EJS</h4>
 <p>Cd uses EJS for the templates, we are using the <a target="_blank" href="https://github.com/freshout-dev/thulium/blob/master/spec.md#tm-tags">Thulium flavor syntax</a>:</p>
+
 <%= Cd.printCode( function(){ %>
 ```django
 <!-- Execute code -->
